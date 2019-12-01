@@ -1,96 +1,89 @@
 # Operation Research
 
- - [Operation Research](#Operation Research)
-    - [Linear programming](##Linear programming)
-       - [Extreme point and Basic feasible solution](###Extreme point and Basic feasible solution)
-          - [Convex set](####Convex set)
-          - [Convex function](####Convex function)
-          - [Linear programming](####Linear programming)
-             - [Extreme point](#####Extreme point)
-             - [Basic feasible solution](#####Basic feasible solution)
-       - [Simplex method](###Simplex method)
-          - [Relationship between Basic feasible solution and Optimal solution](####Relationship between Basic feasible solution and Optimal solution)
-          - [Simplex method](####Simplex method)
-          - [Simplex tableau](####Simplex tableau)
-          - [Degeneration](####Degeneration)
-          - [Proof of simplex method](####Proof of simplex method)
-       - [Initial basic feasible solution](###Initial basic feasible solution)
-          - [Add Slack variables](####Add Slack variables)
-          - [Big M method](####Big M method)
-          - [Two-phase method](####Two-phase method)
-       - [Dual problem](###Dual problem)
-          - [Introduction to Dual problem](####Introduction to Dual problem)
-          - [Dual problem](####Dual problem)
-          - [Properties of Dual problem](####Properties of Dual problem)
-             - [Symmetry](#####Symmetry)
-             - [Weak duality](#####Weak duality)
-             - [Optimality](#####Optimality)
-             - [Unbounded](#####Unbounded)
-             - [Strong duality](#####Strong duality)
-             - [Complementary slackness](#####Complementary slackness)
-          - [Dual simplex method](####Dual simplex method)
-       - [Primal-dual method](###Primal-dual method)
-          - [Primal-dual method](####Primal-dual method)
-             - [Finding a Dual feasible solution](#####Finding a Dual feasible solution)
-             - [Restricted Problem (RP) and Dual Restricted Problem (DRP)](#####Restricted Problem (RP) and Dual Restricted Problem (DRP))
-             - [Improve Dual feasible solution](#####Improve Dual feasible solution)
-             - [Time complexity](#####Time complexity)
-          - [Application: Shortest-path problem](####Application: Shortest-path problem)
-             - [Linear programming](#####Linear programming)
-             - [Dual problem and Dual Restricted Problem of Shortest-path problem](#####Dual problem and Dual Restricted Problem of Shortest-path problem)
-    - [Combinatorial Optimization](##Combinatorial Optimization)
-       - [Linear integer programming, Cutting plane method, and Branch and bound](###Linear integer programming, Cutting plane method, and Branch and bound)
-          - [Linear integer programming](####Linear integer programming)
-             - [0-1 Knapsack problem](#####0-1 Knapsack problem)
-             - [Minimum Spanning Tree](#####Minimum Spanning Tree)
-             - [Bin packing problem](#####Bin packing problem)
-             - [Matching problem](#####Matching problem)
-          - [Gomory cutting-plane method](####Gomory cutting-plane method)
-          - [Branch and bound](####Branch and bound)
-       - [Greedy solution for 1-class problem](###Greedy solution for 1-class problem)
-          - [Independent system](####Independent system)
-             - [Definition](#####Definition)
-             - [Independent set and dependent set](#####Independent set and dependent set)
-             - [Basis and Circuit ](#####Basis and Circuit )
-             - [秩商](#####秩商)
-          - [Dual of Independent system](####Dual of Independent system)
-          - [1-class maximization (minimization) problem](####1-class maximization (minimization) problem)
-             - [$(E, \mathcal{F})$最大化问题的贪心算法](#####$(E, \mathcal{F})$最大化问题的贪心算法)
-          - [Matroid](####Matroid)
-             - [例子](#####例子)
-          - [Intersection of Matroids](####Intersection of Matroids)
-          - [2-class greedy algorithm](####2-class greedy algorithm)
-       - [Approximation](###Approximation)
-          - [Approximation of Knapsack problem](####Approximation of Knapsack problem)
-       - [Approximation - 1](###Approximation - 1)
-          - [Vertex Cover](####Vertex Cover)
-             - [Approximation algorithm 1](#####Approximation algorithm 1)
-             - [Approximation algorithm 2](#####Approximation algorithm 2)
-             - [Approximation algorithm 3](#####Approximation algorithm 3)
-          - [Unrelated Parallel Machine Scheduling (UPMS)](####Unrelated Parallel Machine Scheduling (UPMS))
-       - [Approximation - 2](###Approximation - 2)
-          - [均摊体积](####均摊体积)
-          - [Proof](####Proof)
-             - [第一步：证明均摊体积不超过 1.7](#####第一步：证明均摊体积不超过 1.7)
-             - [第二步：证明除两个 bin 以外，其它 bin 权值均值至少为 1](#####第二步：证明除两个 bin 以外，其它 bin 权值均值至少为 1)
-       - [Approximation - 3](###Approximation - 3)
-          - [Configuration LP](####Configuration LP)
-          - [Approximation algorithm](####Approximation algorithm)
-          - [Iterative algorithm](####Iterative algorithm)
-             - [第一步](#####第一步)
-             - [第二步](#####第二步)
-             - [第三步](#####第三步)
-             - [回顾一下](#####回顾一下)
-       - [Approximation - 4](###Approximation - 4)
-          - [Planar Steiner Tree](####Planar Steiner Tree)
-          - [满足三角不等式的完全图上的斯坦纳树](####满足三角不等式的完全图上的斯坦纳树)
-          - [旅行商问题的近似比](####旅行商问题的近似比)
-          - [满足三角不等式的完全图的旅行商问题](####满足三角不等式的完全图的旅行商问题)
-          - [满足三角不等式的完全图的最短哈密尔顿路](####满足三角不等式的完全图的最短哈密尔顿路)
-             - [$k = 0$](#####$k = 0$)
-             - [$k = 1$](#####$k = 1$)
-             - [$k = 2$](#####$k = 2$)
-
+- [Operation Research](#operation-research)
+	- [Linear programming](#linear-programming)
+		- [Extreme point and Basic feasible solution](#extreme-point-and-basic-feasible-solution)
+			- [Convex set](#convex-set)
+			- [Convex function](#convex-function)
+			- [Linear programming](#linear-programming)
+				- [Extreme point](#extreme-point)
+				- [Basic feasible solution](#basic-feasible-solution)
+		- [Simplex method](#simplex-method)
+			- [Relationship between Basic feasible solution and Optimal solution](#relationship-between-basic-feasible-solution-and-optimal-solution)
+			- [Simplex method](#simplex-method)
+			- [Simplex tableau](#simplex-tableau)
+			- [Degeneration](#degeneration)
+			- [Proof of simplex method](#proof-of-simplex-method)
+		- [Initial basic feasible solution](#initial-basic-feasible-solution)
+			- [Add Slack variables](#add-slack-variables)
+			- [Big M method](#big-m-method)
+			- [Two-phase method](#two-phase-method)
+		- [Dual problem](#dual-problem)
+			- [Introduction to Dual problem](#introduction-to-dual-problem)
+			- [Dual problem](#dual-problem)
+			- [Properties of Dual problem](#properties-of-dual-problem)
+				- [Symmetry](#symmetry)
+				- [Weak duality](#weak-duality)
+				- [Optimality](#optimality)
+				- [Unbounded](#unbounded)
+				- [Strong duality](#strong-duality)
+				- [Complementary slackness](#complementary-slackness)
+			- [Dual simplex method](#dual-simplex-method)
+		- [Primal-dual method](#primal-dual-method)
+			- [Primal-dual method](#primal-dual-method)
+				- [Finding a Dual feasible solution](#finding-a-dual-feasible-solution)
+				- [Restricted Problem (RP) and Dual Restricted Problem (DRP)](#restricted-problem-rp-and-dual-restricted-problem-drp)
+				- [Improve Dual feasible solution](#improve-dual-feasible-solution)
+				- [Time complexity](#time-complexity)
+			- [Application: Shortest-path problem](#application-shortest-path-problem)
+				- [Linear programming](#linear-programming)
+				- [Dual problem and Dual Restricted Problem of Shortest-path problem](#dual-problem-and-dual-restricted-problem-of-shortest-path-problem)
+	- [Combinatorial Optimization](#combinatorial-optimization)
+		- [Linear integer programming, Cutting plane method, and Branch and bound](#linear-integer-programming-cutting-plane-method-and-branch-and-bound)
+			- [Linear integer programming](#linear-integer-programming)
+				- [0-1 Knapsack problem](#0-1-knapsack-problem)
+				- [Minimum Spanning Tree](#minimum-spanning-tree)
+				- [Bin packing problem](#bin-packing-problem)
+				- [Matching problem](#matching-problem)
+			- [Gomory cutting-plane method](#gomory-cutting-plane-method)
+			- [Branch and bound](#branch-and-bound)
+		- [Greedy solution for 1-class problem](#greedy-solution-for-1-class-problem)
+			- [Independent system](#independent-system)
+				- [Independent system](#independent-system)
+				- [Independent set and dependent set](#independent-set-and-dependent-set)
+				- [基与圈](#基与圈)
+				- [秩商](#秩商)
+			- [1-class maximization (minimization) problem](#1-class-maximization-minimization-problem)
+			- [Matroid](#matroid)
+			- [2-class greedy algorithm](#2-class-greedy-algorithm)
+		- [Approximation - 1](#approximation---1)
+			- [Vertex Cover](#vertex-cover)
+				- [Approximation algorithm 1](#approximation-algorithm-1)
+				- [Approximation algorithm 2](#approximation-algorithm-2)
+				- [Approximation algorithm 3](#approximation-algorithm-3)
+			- [Unrelated Parallel Machine Scheduling (UPMS)](#unrelated-parallel-machine-scheduling-upms)
+		- [Approximation - 2](#approximation---2)
+			- [均摊体积](#均摊体积)
+			- [Proof](#proof)
+				- [第一步：证明均摊体积不超过 1.7](#第一步证明均摊体积不超过-17)
+				- [第二步：证明除两个 bin 以外，其它 bin 权值均值至少为 1](#第二步证明除两个-bin-以外其它-bin-权值均值至少为-1)
+		- [Approximation - 3](#approximation---3)
+			- [Configuration LP](#configuration-lp)
+			- [Approximation algorithm](#approximation-algorithm)
+			- [Iterative algorithm](#iterative-algorithm)
+				- [第一步](#第一步)
+				- [第二步](#第二步)
+				- [第三步](#第三步)
+				- [回顾一下](#回顾一下)
+		- [Approximation - 4](#approximation---4)
+			- [Planar Steiner Tree](#planar-steiner-tree)
+			- [满足三角不等式的完全图上的斯坦纳树](#满足三角不等式的完全图上的斯坦纳树)
+			- [旅行商问题的近似比](#旅行商问题的近似比)
+			- [满足三角不等式的完全图的旅行商问题](#满足三角不等式的完全图的旅行商问题)
+			- [满足三角不等式的完全图的最短哈密尔顿路](#满足三角不等式的完全图的最短哈密尔顿路)
+				- [$k = 0$](#k--0)
+				- [$k = 1$](#k--1)
+				- [$k = 2$](#k--2)
 
 ## Linear programming
 
@@ -300,7 +293,7 @@ $$
 $$
 由于 $x_B = \begin{bmatrix} x_3 & x_4 \end{bmatrix} ^ T$，所以此时的 $A_B$ 由第二行和第三行的三、四两列组成，而且恰好是 $I$；$c_B^T$ 由第一行的第三、四两列组成，而且恰好是 0，我们直接来到了最后一步。
 
-根据单纯形法，我们选择检验数中较大的那个（$3$，对应 $x_1$）。由于 $12/2 = 6 < 9/1 = 9$，所以 $x_1$ 成为基变量，$x_3$ 被移出基变量。修改表格为
+根据单纯形法，我们选择检验数中较大的那个（3，对应 $x_1$）。由于 $12/2 = 6 < 9/1 = 9$，所以 $x_1$ 成为基变量，$x_3$ 被移出基变量。修改表格为
 $$
 \begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_1 & 2 & 1 & 1 & 0 & 12 \\ x_4 & 1 & 2 & 0 & 1 & 9 \end{array}
 $$
@@ -799,7 +792,7 @@ $$
 $$
 \begin{matrix} \max\limits_{(i, j) \in E} & x_{i, j} \\ \text{s.t.} & Ax \le b \\ & x_{i, j} \in \{0, 1\} \end{matrix}
 $$
-其中 $A$ 为图的点 - 边关联矩阵，$y$ 是一个全为 $1$ 的向量。
+其中 $A$ 为图的点 - 边关联矩阵，$y$ 是一个全为 1 的向量。
 
 匹配问题中，二分图的最大匹配最为特殊。如果把 $x_{i, j} \in \{0, 1\}$ 这项条件改成 $x \ge 0$，用线性规划求解二分图的最大匹配问题，最优解仍然非 $0$ 即 $1$。和上一节课讲解的最短路问题一样，这也是因为二分图的点 - 边关联矩阵是全幺模矩阵。
 
@@ -833,93 +826,55 @@ $$
 
 接下来介绍两种解线性整数规划问题的方法，首先介绍 Gomory 割平面法。
 
-Gomory 割平面法的思想就是一直**去除非整数的最优解**，直到某一次求得的最优解为整数。考虑一个线性规划问题，假设我们使用单纯形表求解后获得的不是整数解，我们选择一个非整数的变量 $x_i$，根据单纯形表有
-$$
-x_i + \sum\limits_{j=m+1}^n \bar{a_{i,j}}x_j = \bar{b_i} \qquad \qquad \text{①}
-$$
-既然 $x_i$ 不是整数，说明 $\bar{b_i}$ 一定不是整数，当然 $\bar{a_{i,j}}$ 也可能不是整数。
+Gomory 割平面法的思想就是一直去除非整数的最优解，直到某一次求得的最优解为整数。考虑一个线性规划问题，假设我们使用单纯形表求解后获得的不是整数解，我们选择一个非整数的变量 $x_i$，根据单纯形表有 $$x_i + \sum\limits_{j=m+1}^n \bar{a_{i,j}}x_j = \bar{b_i} \qquad \qquad \text{①} $$ 既然 $x_i$ 不是整数，说明 $\bar{b_i}$ 一定不是整数，当然 $\bar{a_{i,j}}$ 也可能不是整数。
 
-将式$\text{①}$调整一下，变为
-$$
-x_i + \sum\limits_{j=m+1}^n \left\lfloor \bar{a_{i,j}} \right\rfloor x_j \le \bar{b_i} \qquad \qquad \text{②}
-$$
-显然，式$\text{①}$的解一定是式$\text{②}$的解。
+将式 ① 调整一下，变为 $$x_i + \sum\limits_{j=m+1}^n \left\lfloor \bar{a_{i,j}} \right\rfloor x_j \le \bar{b_i} \qquad \qquad \text{②} $$ 显然，式 ① 的解一定是式 ② 的解。
 
-再次调整式$\text{②}$，变为
-$$
-x_i + \sum\limits_{j=m+1}^n \left\lfloor \bar{a_{i,j}} \right\rfloor x_j \le \left\lfloor\bar{b_i}\right\rfloor \qquad \qquad \text{③}
-$$
-容易看出，式$\text{②}$的整数解一定符合式$\text{③}$，而原来用单纯形表求出的非整数解就不符合式$\text{③}$了（因为原来求出的非整数解中，有 $x_i = \bar{b_i} > \left\lfloor \bar{b_i } \right\rfloor$ 以及 $x_j = 0$）。我们只要把式$\text{③}$加入原来的线性规划问题，重新求解多出一个限制的线性规划问题。如果求出来的是整数解就停止，否则继续加入限制并求解，直到获得整数解为止。
+再次调整式 ②，变为 $$x_i + \sum\limits_{j=m+1}^n \left\lfloor \bar{a_{i,j}} \right\rfloor x_j \le \left\lfloor\bar{b_i}\right\rfloor \qquad \qquad \text{③}$$ 容易看出，式 ② 的整数解一定符合式 ③，而原来用单纯形表求出的非整数解就不符合式 ③ 了（因为原来求出的非整数解中，有 $x_i = \bar{b_i} > \left\lfloor \bar{b_i } \right\rfloor$ 以及 $x_j = 0$）。我们只要把式 ③ 加入原来的线性规划问题，重新求解多出一个限制的线性规划问题。如果求出来的是整数解就停止，否则继续加入限制并求解，直到获得整数解为止。
 
-顺便一提，大部分参考资料不会直接加入式$\text{③}$，而是加入$\text{①}- \text{③}$，即
-$$
-\sum\limits_{j=m+1}^n(\bar{a_{i,j}} - \left\lfloor \bar{a_{i,j}} \right\rfloor) x_j \ge \bar{b_i} - \left\lfloor \bar{b_i} \right\rfloor
-$$
-当然效果是一样的。
+顺便一提，大部分参考资料不会直接加入式 ③，而是加入 ① - ③，即 $$\sum\limits_{j=m+1}^n(\bar{a_{i,j}} - \left\lfloor \bar{a_{i,j}} \right\rfloor) x_j \ge \bar{b_i} - \left\lfloor \bar{b_i} \right\rfloor$$ 当然效果是一样的。
 
-举个例子，考虑以下线性整数规划问题
-$$
-\begin{matrix} \max\limits_x & 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + 3x_2 + x_3 = 14 \\ & 2x_1 + x_2 + x_4 = 9 \\ & x \ge 0 \end{matrix}
-$$
-用单纯形表解该问题，结果为
-$$
-\begin{array}{c|cccc|c} & 0 & 0 & -1/4 & -5/4 & -59/4 \\ \hline x_2 & 0 & 1 & 1/2 & -1/2 & 5/2 \\ x_1 & 1 & 0 & -1/4 & 3/4 & 13/4 \end{array}
-$$
-选择 $x_2$，加入限制：$x_2 - x_4 \le 2$，即 $x_2 - x_4 + x_5 = 2$。用单纯形表求解加入限制后的问题，结果为
-$$
-\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -1 & -1/2 & -29/2 \\ \hline x_3 & 0 & 0 & 1 & 1 & -2 & 1 \\ x_1 & 1 & 0 & 0 & 1 & -1/2 & 7/2 \\ x_2 & 0 & 1 & 0 & -1 & 1 & 2 \end{array}
-$$
-选择 $x_1$，加入限制：$x_1 + x_4 - x_5 \le 3$，即 $x_1 + x_4 - x_5 + x_6 = 3$. 用单纯形表求解加入限制后的问题，结果为
-$$
-\begin{array}{c|cccccc|c} & 0 & 0 & 0 & -1 & 0 & -1 & -14 \\ \hline x_3 & 0 & 0 & 1 & 1 & 0 & -4 & 3 \\ x_1 & 1 & 0 & 0 & 1 & 0 & -1 & 4 \\ x_5 & 0 & 0 & 0 & 0 & 1 & -2 & 1 \\ x_2 & 0 & 1 & 0 & -1 & 0 & 2 & 1 \end{array}
-$$
-所以原问题的最优解为 $x_1 = 4, x_2 = 1$，目标函数值为 $14$。
+ 
+
+来举个例子，考虑以下线性整数规划问题 $$\begin{matrix} \max\limits_x & 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + 3x_2 + x_3 = 14 \\ & 2x_1 + x_2 + x_4 = 9 \\ & x \ge 0 \end{matrix}$$ 用单纯形表解该问题，结果为 $$\begin{array}{c|cccc|c} & 0 & 0 & -1/4 & -5/4 & -59/4 \\ \hline x_2 & 0 & 1 & 1/2 & -1/2 & 5/2 \\ x_1 & 1 & 0 & -1/4 & 3/4 & 13/4 \end{array}$$ 选择 $x_2$，加入限制：$x_2 - x_4 \le 2$，即 $x_2 - x_4 + x_5 = 2$。用单纯形表求解加入限制后的问题，结果为 $$\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -1 & -1/2 & -29/2 \\ \hline x_3 & 0 & 0 & 1 & 1 & -2 & 1 \\ x_1 & 1 & 0 & 0 & 1 & -1/2 & 7/2 \\ x_2 & 0 & 1 & 0 & -1 & 1 & 2 \end{array}$$ 选择 $x_1$，加入限制：$x_1 + x_4 - x_5 \le 3$，即 $x_1 + x_4 - x_5 + x_6 = 3$. 用单纯形表求解加入限制后的问题，结果为 $$\begin{array}{c|cccccc|c} & 0 & 0 & 0 & -1 & 0 & -1 & -14 \\ \hline x_3 & 0 & 0 & 1 & 1 & 0 & -4 & 3 \\ x_1 & 1 & 0 & 0 & 1 & 0 & -1 & 4 \\ x_5 & 0 & 0 & 0 & 0 & 1 & -2 & 1 \\ x_2 & 0 & 1 & 0 & -1 & 0 & 2 & 1 \end{array}$$ 所以原问题的最优解为 $x_1 = 4, x_2 = 1$，目标函数值为 $14$。
 
 #### Branch and bound
 
-先将原问题放松成线性规划问题，解这个线性规划，就得到了整数规划最优解的上界。假设最优解中 $N < x_i < N+1$ 不是整数，就会有两种可能：$x_i \le N$ 或 $x_i \ge N+1$，对两种情况分别进行搜索。如果在某一枝内算出了一个整数解，我们就得到了原整数规划最优解的下界；如果另一枝内线性规划问题的解还没有这个下界来得优，那么那一枝就可以直接不考虑了（因为线性规划问题的解是那一枝能找到的最优解的上界）。
+（其实我觉得应该写作分支定界法，不过上课的老师坚持认为是分枝- -）
 
-举一个例子
+分枝定界法的思想和最优性剪枝或者 min-max 搜索树什么的差不多。我们先将原问题放松成线性规划问题，解这个线性规划，就得到了整数规划最优解的上界。假设最优解中 $N < x_i < N+1$ 不是整数，就会有两种可能：$x_i \le N$ 或 $x_i \ge N+1$，对两种情况分别进行搜索。如果在某一枝内算出了一个整数解，我们就得到了原整数规划最优解的下界；如果另一枝内线性规划问题的解还没有这个下界来得优，那么那一枝就可以直接不考虑了（因为线性规划问题的解是那一枝能找到的最优解的上界）。总而言之就是带着最优性剪枝的暴搜。
+
+ 
+
+用一张 youtube 视频里的图作为例子
 
 ![分枝定界法](https://images.cnblogs.com/cnblogs_com/tsreaper/1112059/o_aop6.branch-and-bound.png)
 
-对于放松后的线性规划问题，最优解为 $x_1 = 8, x_2 = 2.25$，目标函数值为 $35.25$；
+对于放松后的线性规划问题，最优解为 $x_1 = 8, x_2 = 2.25$，目标函数值为 35.25；
 
-首先考虑 $x_2 \le 2$，也就是 node1A，算得该情况下最优解为 $x_1 = 8, x_2 = 2$，目标函数值为 $34$。这是一个整数解，记录并回溯；
+首先考虑 $x_2 \le 2$，也就是 node1A，算得该情况下最优解为 $x_1 = 8, x_2 = 2$，目标函数值为 34。这是一个整数解，记录并回溯；
 
-考虑 $x_2 \ge 3$，也就是 node1B，算得该情况下的最优解为 $x_1 = 6.5, x_2 = 3$，目标函数值为 $34.5$。它还优于我们已知的下界 34，继续搜索；
+考虑 $x_2 \ge 3$，也就是 node1B，算得该情况下的最优解为 $x_1 = 6.5, x_2 = 3$，目标函数值为 34.5。它还优于我们已知的下界 34，继续搜索；
 
-考虑 $x_1 \le 6$，也就是 node2C，算得该情况下的最优解为 $x_1 = 6, x_2 = 3.25$，目标函数值为 $34.25$。它还优于我们已知的下界 34，继续搜索；
+考虑 $x_1 \le 6$，也就是 node2C，算得该情况下的最优解为 $x_1 = 6, x_2 = 3.25$，目标函数值为 34.25。它还优于我们已知的下界 34，继续搜索；
 
-考虑 $x_2 \le 3$，也就是 node3E，算得该情况下的最优解为 $x_1 = 6, x_2 = 3$，目标函数值为 $33$。它劣于我们已知的下界 34，回溯；
+考虑 $x_2 \le 3$，也就是 node3E，算得该情况下的最优解为 $x_1 = 6, x_2 = 3$，目标函数值为 33。它劣于我们已知的下界 34，回溯；
 
-考虑 $x_2 \ge 4$，也就是 node3F，算得该情况下的目标函数值为 33.5。它劣于我们已知的下界 $34$，回溯；
+考虑 $x_2 \ge 4$，也就是 node3F，算得该情况下的目标函数值为 33.5。它劣于我们已知的下界 34，回溯；
 
 考虑 $x_1 \ge 7$，也就是 node2D，该情况下无可行解，回溯；
 
-搜索得最优解为 $x_1 = 8, x_2 = 2$，目标函数值为 $34$。
+搜索得最优解为 $x_1 = 8, x_2 = 2$，目标函数值为 34。
 
-（事实上我觉得这个例子不太好，其实在 node1B就可以直接回溯了。因为 node1B 那一枝的上界是 $34.5$，那么最优整数解最多只有 $34$ 了。）
+（事实上我觉得这个例子不太好，其实在 node1B就可以直接回溯了。因为 node1B 那一枝的上界是 34.5，那么最优整数解最多只有 34 了。）
 
-再试一试 Gomory 单纯形法的那个例子。
+ 
 
-将原问题松弛为线性规划问题后，得到的最优解为 $x_2 = 5/2, x_1 = 13/4$，目标函数值为 $59/4$。
+再试一试 Gomory 单纯形法的那个例子。将原问题松弛为线性规划问题后，得到的最优解为 $x_2 = 5/2, x_1 = 13/4$，目标函数值为 $59/4$。
 
-先探索 $x_2 \le 2$ 的情况，用单纯形表求解得
-$$
-\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -1 & -1/2 & -29/2 \\ \hline x_3 & 0 & 0 & 1 & 1 & -2 & 1 \\ x_1 & 1 & 0 & 0 & 1 & -1/2 & 7/2 \\ x_2 & 0 & 1 & 0 & -1 & 1 & 2 \end{array}
-$$
-探索 $x_1 \le 3$ 的情况，用单纯形表求解得
-$$
-\begin{array}{c|cccccc|c} & 0 & 0 & 0 & 0 & -2 & -3 & -13 \\ \hline x_3 & 0 & 0 & 1 & 0 & 0 & -2 & 2 \\ x_4 & 0 & 0 & 0 & 1 & 0 & -2 & 1 \\ x_2 & 0 & 1 & 0 & 0 & 1 & 0 & 2 \\ x_1 & 1 & 0 & 0 & 0 & 0 & 1 & 3 \end{array}
-$$
-得到候选的解 $x_1 = 3, x_2 = 2$，目标函数值为 $13$。
+先探索 $x_2 \le 2$ 的情况，用单纯形表求解得 $$\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -1 & -1/2 & -29/2 \\ \hline x_3 & 0 & 0 & 1 & 1 & -2 & 1 \\ x_1 & 1 & 0 & 0 & 1 & -1/2 & 7/2 \\ x_2 & 0 & 1 & 0 & -1 & 1 & 2 \end{array}$$ 探索 $x_1 \le 3$ 的情况，用单纯形表求解得 $$\begin{array}{c|cccccc|c} & 0 & 0 & 0 & 0 & -2 & -3 & -13 \\ \hline x_3 & 0 & 0 & 1 & 0 & 0 & -2 & 2 \\ x_4 & 0 & 0 & 0 & 1 & 0 & -2 & 1 \\ x_2 & 0 & 1 & 0 & 0 & 1 & 0 & 2 \\ x_1 & 1 & 0 & 0 & 0 & 0 & 1 & 3 \end{array}$$ 得到候选的解 $x_1 = 3, x_2 = 2$，目标函数值为 $13$。
 
-接下来探索 $x_1 \ge 4$，用单纯形表解得
-$$
-\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -2 & -1 & -14 \\ \hline x_1 & 1 & 0 & 0 & 0 & -1 & 4 \\ x_3 & 0 & 0 & 1 & -2 & -4 & 3 \\ x_2 & 0 & 1 & 0 & 1 & 2 & 1 \\ x_5 & 0 & 0 & 0 & 0 & 1 & 1 \end{array}
-$$
-得到候选的解 $x_1 = 4, x_2 = 1$，目标函数值为 $14$。
+接下来探索 $x_1 \ge 4$，用单纯形表解得 $$\begin{array}{c|ccccc|c} & 0 & 0 & 0 & -2 & -1 & -14 \\ \hline x_1 & 1 & 0 & 0 & 0 & -1 & 4 \\ x_3 & 0 & 0 & 1 & -2 & -4 & 3 \\ x_2 & 0 & 1 & 0 & 1 & 2 & 1 \\ x_5 & 0 & 0 & 0 & 0 & 1 & 1 \end{array}$$ 得到候选的解 $x_1 = 4, x_2 = 1$，目标函数值为 $14$。
 
 注意到原问题目标函数值的上界为 $59/4$，而 $14 < 59/4 < 15$，所以目标函数值的整数上界为 $14$，$x_1 = 4, x_2 = 1$ 必然为整数最优解. 所以原问题的最优解为 $x_1 = 4, x_2 = 1$，目标函数值为 $14$。
 
@@ -929,98 +884,43 @@ $$
 
 考虑一个有限元素集合 $E$，给 $E$ 中的每个元素 $e$ 定义一个非负的费用 $c(e)$。再考虑 $\mathcal{F} \in 2^E$，那么对于 $F \in \mathcal{F}$，我们定义 $F$ 的费用 $c(F) = \sum\limits_{e \in F} c(e)$。现在我们要找出一个 $F$，使得 $c(F)$ 最大（或最小）。这就是这节课我们需要考虑的一类问题。
 
-##### Definition
+##### Independent system
 
-从这类问题中，我们引入独立系统的概念。对于一个二元组 $(E, \mathcal{F})$，
-
-1.  $\emptyset \in \mathcal{F}$ 。 
-2.  $\forall Y \in \mathcal{F}$，$X \subseteq Y \to X \in \mathcal{F}$ 。 
-
-那么我们称 $(E, \mathcal{F})$ 为独立系统。
+从这类问题中，我们引入独立系统的概念。对于一个二元组 $(E, \mathcal{F})$，若 $\forall Y \in \mathcal{F}$，$X \subseteq Y \to X \in \mathcal{F}$，那么我们称 $(E, \mathcal{F})$ 为独立系统。由这个定义我们马上推出，$\emptyset \in \mathcal{F}$。
 
 ##### Independent set and dependent set
 
 在独立系统 $(E, \mathcal{F})$ 中，$\mathcal{F}$ 中的元素称为独立集，$E - \mathcal{F}$ 中的元素称为相关集。
 
-##### Basis and Circuit 
+##### 基与圈
 
-我们将 $\mathcal{F}$ 中的**极大独立集**称为基，将 $E - \mathcal{F}$ 中的**极小相关集**称为圈。
+我们将 $\mathcal{F}$ 中的极大独立集称为基，将 $E - \mathcal{F}$ 中的极小相关集称为圈。
 
 对于 $X \subseteq E$，定义 $X$ 上的基为 $X$ 中的极大独立集。
 
 ##### 秩商
 
-对于 $X \subseteq E$，$X$ 中的基大小可能不同。我们定义 $X$ 的秩 $r(X)$ 为 $X$ 中**最大的基的大小**，类似地定义 $X$ 的下秩 $\rho(X)$ 为 $X$ 中**最小的基的大小**。
+对于 $X \subseteq E$，$X$ 中的基大小可能不同。我们定义 $X$ 的秩 $r(X)$ 为 $X$ 中最大的基的大小，类似地定义 $X$ 的下秩 $\rho(X)$ 为 $X$ 中最小的基的大小。
 
 由此定义独立系统的秩商 $q(E, \mathcal{F}) = \min\limits_{x \subseteq E} \quad \frac{\rho(X)}{r(X)}$。秩商是一类问题中贪心解法近似比的下界，下面会进行说明。
-
-#### Dual of Independent system
-
-$(E, \mathcal{F}) \rightarrow (E, \mathcal{F}^*)$，$\mathcal{F}^* = \{x \subseteq E \ | \ \exists F的一个基\beta, \ x \cap \beta = \emptyset\}$。
-
-性质：
-
-1.  $(E, \mathcal{F}^*)$是一个独立集系统。
-
-2.  若$B$是$(E, \mathcal{F})$的基，$E - B$是$(E, \mathcal{F}^*)$的基。
-
-3.  $(E, \mathcal{F}^{**}) = (E, \mathcal{F})$。
-    $$
-    \forall x \in \mathcal{F}^{**} \iff
-    \exists (E, \mathcal{F}^*) 的一个基B^*, x \cap B^* = \emptyset \\ \iff
-    \exists (E, \mathcal{F}) 的一个基B, x \cap (E - B) = \emptyset \\ \iff
-    \exists (E, \mathcal{F}) 的一个基B, x \subseteq B \\ \iff 
-    x \subseteq \mathcal{F}
-    $$
-    
 
 #### 1-class maximization (minimization) problem
 
 根据独立系统的定义，我们引出一类最大（小）化问题。
 
-**最（极）大化问题**：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $c(F)$ 最大。
+**最大化问题**：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $c(F)$ 最大。
 
 很显然，由于每个元素的费用都是非负的，所以 $|F|$ 越大，$c(F)$ 也越大。所以最优的 $F$ 一定是基。
 
-**最（极）小化问题**：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $F$ 是基，且 $c(F)$ 最小。
+**最小化问题**：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $F$ 是基，且 $c(F)$ 最小。
 
 （如果不要求 $F$ 是基，那么取 $F = \emptyset$ 就会让代价最小，没什么意义...）
 
-##### $(E, \mathcal{F})$最大化问题的贪心算法
-
-1.  $\mathcal{F} = \emptyset \ (e_1 \ge e_2 \ge \cdots \ge e_n)$. 
-    $\forall i = 1: n \\ \quad if \ \mathcal{F} \ \cup \{e_i\} \in \mathcal{F} \\ \quad F:= F \ \cup \{e_i\}$ 
-2.  $\mathcal{F} = E \ (e_1 \ge e_2 \ge \cdots \ge e_n)$. 
-    $\forall i = 1: n \\ \quad if \ \mathcal{F} \ - \{e_i\} \ 含基 \\ \quad F:= F \ - \{e_i\}$ 
-
-**定理**：对任一最大化问题$(E, \mathcal{F})$有$q(E, \mathcal{F}) \le \frac{G(E, \mathcal{F})}{OPT(E, \mathcal{F})} \le 1$，其中$G(E, \mathcal{F})$是贪心算法的目标函数值。
-
-证明：
-
-$E = \{e_1, \ \cdots, \ e_n\}, \ c: E \rightarrow R^+$。$G_n$是贪心算法的解，$O_n$是最优解，有$G_j = G_n \cap E_j, \ O_j = O_n \cap E_j$，其中$E_j = \{e_1, \ \cdots, \ e_j\}, \ c_1 \le c_2 \le \cdots, c_n, \ G_0 = O_o = \emptyset$。
-
-$c(G_n) = \sum^{n}_{j = 1}(|G_j| - |G_{j - 1}|) \times c_j = \sum^{n}_{j = 1}|G_j| \times (c_j - c_{j + 1})$ （因为$|G_j|$是$E_j$的一个最大独立集）
-
-$\ge \sum^{n}_{j = 1}\rho(E_j) \times (c_j - c_{j + 1}) \ge q\sum^{n}_{j = 1}r(E_j)(c_j - c_{j + 1})$ （因为$r(E_j)$是最大个数）
-
-$\ge q\sum^{n}_{j = 1}|O_j|(c_j - c_{j + 1}) = q \times c(O_n)$
-
-$\Rightarrow \frac{c(G_n)}{c(O_n)} \ge q$
-
-$\exist F, \ \frac{\rho(F)}{r(F)} = q(E, F) = \frac{|X|}{|Y|}$ ， 构造
-$$
-c(e) = 
-\begin{cases}
-1, \ e \in F \\
-0, \ e \notin F
-\end{cases} \\
-(c_1 = c_2 = \cdots = c_{|X|} = 1, \ c_{|X| + 1} = \cdots = c_n = 0)
-$$
-
+ 
 
 最大化问题的实例有很多。
 
-$0-1$ 背包问题：$E$ 中的元素是每个物品，$\mathcal{F}$ 中的元素是所有可以放进背包的物品集合，费用就是物品的价值。
+0-1 背包问题：$E$ 中的元素是每个物品，$\mathcal{F}$ 中的元素是所有可以放进背包的物品集合，费用就是物品的价值。
 
 最大权独立集：$E$ 中的元素是点，$\mathcal{F}$ 中的元素是独立集，费用就是每个点的权值。
 
@@ -1042,18 +942,12 @@ $0-1$ 背包问题：$E$ 中的元素是每个物品，$\mathcal{F}$ 中的元�
 
 拟阵（matroid）是一个特殊的独立系统。一个独立系统需要满足以下三个条件中的一个才被称为是拟阵（事实上以下三个条件等价）：
 
-$(E, \mathcal{F})$是独立集系统：
-
-1.  $\emptyset \in \mathcal{F}$。
-2.  若$X \in \mathcal{F}, \forall Y \subseteq X, Y \in \mathcal{F}$。
-
-
-
 (1) 若 $X, Y \in \mathcal{F}$，且 $|X| > |Y|$，则 $\exists e \in X - Y$，$Y \cup \{e\} \in \mathcal{F}$；
 
 (2) 若 $X, Y \in \mathcal{F}$，且 $|X| = |Y| + 1$，则 $\exists e \in X - Y$，$Y \cup \{e\} \in \mathcal{F}$；
-
 (3) $\forall X \subseteq E$，$X$ 的所有基大小相同。
+
+ 
 
 接下来说明这三个条件等价。
 
@@ -1082,39 +976,6 @@ $(E, \mathcal{F})$是独立集系统：
 
 反过来也是成立的，证明类似就略去。
 
-##### 例子
-
-1.  $E = \{v_1, \ \cdots, \ v_m\}$，$\mathcal{F} = \{z \subseteq E \ | \ z是线性无关组\}$。
-2.  $E$是有限集合，$\mathcal{F} = \{X \subseteq E, |X| \le k \in N\}$。（一致拟阵）
-3.  $E$是无向图$G$，$\mathcal{F} = \{X \subseteq E, X构成一个森林\}$。（图拟阵）
-
-#### Intersection of Matroids
-
-$(E, \mathcal{F}_1)$，$(E, \mathcal{F}_2)$，其交为$(E, \mathcal{F}_1 \cap \mathcal{F}_2)$。
-
-**定理**：任一个独立集系统都是有限个拟阵的交。
-
-证明：
-
-独立集系统$(E, \mathcal{F})$，不妨设其有$k$个圈$C_1, \ \cdots, C_k$，$F_i = \{X \subseteq E | X \nsupseteq C_i\}$。
-
-$(E, \mathcal{F}_i), \ \forall \mathcal{F} \subseteq E$，此时有两种可能：
-
-1.  $F \nsupseteq C_i$。
-2.  $F \supseteq C_i$，$\forall e \in C_i, \mathcal{F} - \{e\}是极大独立集。$
-
-$\forall X \in \mathcal{F}, X 不含任何圈 \iff X \in \cap^{k}_{i = 1}\mathcal{F}_i$
-
-
-
-$(E, \mathcal{F})$为独立集系统，$\mathcal{F} = \cap^{k}_{i = 1}\mathcal{F}_i$。
-
-设$F \subseteq E$，考虑$(E, \mathcal{F})$在$\mathcal{F}$上，两个不同的极大独立集，$A, B \ (|B| \ge |A|)$欲证$|B| \le k|A|$。
-
-$\forall e \in B - A$，有$e \notin \cap^{k}_{i = 1} (A_i - A)$，$A_i: (E, \mathcal{F_i})在A \cup B含A极大独立集$，则$e$最多出现在$(k - 1)$个$A_i - A$中，$\sum^{k}_{i = 1}|A_i - A| \le (k - 1)|B - A| \le (k - 1)|B|$，同理$k|B| \le \sum^{k}_{i = 1} = \sum^{k}_{i = 1}|A_i| （因为极大独立集有相同维数）\le k|A| + (k - 1)|B|$。
-
-得证$|B| \le k|A|$。
-
 #### 2-class greedy algorithm
 
 下面介绍两类贪心算法，分别用于独立系统的最大化和最小化问题。
@@ -1127,51 +988,21 @@ $\forall e \in B - A$，有$e \notin \cap^{k}_{i = 1} (A_i - A)$，$A_i: (E, \ma
 
 接下来介绍重要的 Best in 定理：设 $G(E, \mathcal{F})$ 表示 best in 贪心得到的解，$\text{OPT}(E, \mathcal{F})$ 表示最优解，则 $$q(E, \mathcal{F}) \le \frac{G(E, \mathcal{F})}{\text{OPT}(E, \mathcal{F})} \le 1$$ 从这个定理可以看出，如果一个独立系统是拟阵，那么用 best in 得到的最大化问题的解一定是最优解。
 
+ 
+
 下面证明 Best in 定理：
 
-首先定义 $E_j = \{e_1, e_2, \dots, e_n\}$，$G_n$ 是 best in 贪心选中元素的集合，$O_n$ 是最优解选中元素的集合。令 $G_j = E_j \cap G_n$ 表示 best in 贪心在考虑 $e_j$ 之后选择了哪些元素，$O_j = E_j \cap O_n$ 表示最优解在考虑 $e_j$ 之后选择了哪些元素。记 $d_j = c(e_j) - c(e_{j+1})$ 以及 $d_n = c(e_n)$，那么
-$$
-\begin{matrix} c(G_n) & = & \sum\limits_{j=1}^n(|G_j| - |G_{j-1}|)c(e_j) \\ & = & \sum\limits_{j=1}^n|G_j|d_j \\ & \ge & \sum_{j=1}^n \rho(E_j)d_j & \text{（因为容易证明 } G_j \text{ 是 } E_j \text{ 的一个极大独立集）} \\ & \ge & q(E, \mathcal{F})\sum\limits_{j=1}^n r(E_j)d_j & \text{（根据秩商的定义）} \\ & \ge & q(E, \mathcal{F})\sum\limits_{j=1}^n |O_j|d_j \\ & = & q(E, \mathcal{F})c(O_n) \end{matrix}
-$$
-这就证明了 Best in 定理。
+首先定义 $E_j = \{e_1, e_2, \dots, e_n\}$，$G_n$ 是 best in 贪心选中元素的集合，$O_n$ 是最优解选中元素的集合。令 $G_j = E_j \cap G_n$ 表示 best in 贪心在考虑 $e_j$ 之后选择了哪些元素，$O_j = E_j \cap O_n$ 表示最优解在考虑 $e_j$ 之后选择了哪些元素。记 $d_j = c(e_j) - c(e_{j+1})$ 以及 $d_n = c(e_n)$，那么 $$\begin{matrix} c(G_n) & = & \sum\limits_{j=1}^n(|G_j| - |G_{j-1}|)c(e_j) \\ & = & \sum\limits_{j=1}^n|G_j|d_j \\ & \ge & \sum_{j=1}^n \rho(E_j)d_j & \text{（因为容易证明 } G_j \text{ 是 } E_j \text{ 的一个极大独立集）} \\ & \ge & q(E, \mathcal{F})\sum\limits_{j=1}^n r(E_j)d_j & \text{（根据秩商的定义）} \\ & \ge & q(E, \mathcal{F})\sum\limits_{j=1}^n |O_j|d_j \\ & = & q(E, \mathcal{F})c(O_n) \end{matrix}$$ 这就证明了 Best in 定理。
 
 可以举一个例子说明 Best in 定理的下界是紧的：根据秩商的定义，$\exists X \subset E$，$X$ 的基 $B_1$ 和 $B_2$ 满足 $\frac{|B_1|}{|B_2|} = q(E, \mathcal{F})$。我们定义 $$c(e) = \begin{cases} 1 & e \in X \\ 0 & e \not\in X \end{cases}$$ 然后把 $B_1$ 中的元素排在前面形成 $e_1, e_2, \dots, e_{|B_1|}$，后面随便排。如果使用 best in 贪心，就会把前面 $|B_1|$ 个元素选走，然而最优解可以选 $|B_2|$ 个元素。
 
  
 
+另外还有两个奇怪的定理，上课提了一下...
+
 Worst out 定理：使用 worst out 贪心得到的解满足 $$1 \le \frac{G(E, \mathcal{F})}{\text{OPT}(E, \mathcal{F})} \le \max\limits_{F \subseteq E} \quad \frac{|F| - \rho^*(F)}{|F| - r^*(F)}$$ 其中 $\rho^*(F)$ 表示对偶独立系统中的下秩，$r^*(F)$ 表示对偶独立系统中的秩。
 
 $n$ 个拟阵的交：$n$ 个拟阵的交，用贪心得到的解近似比为 $\frac{1}{n}$。
-
-### Approximation
-
-算法$A$是一近似算法，$A(I)$是算法$A$在例子$I$的目标函数值，$OPT(I)$是最优解的目标函数值。
-
-算法$A$的近似比$\rho_A = \sup_{I}\{\frac{OPT(I)}{A(I)}, \frac{A(I)}{OPT(I)}\}$。
-
-称算法$A$为$r$近似，若$\forall I, OPT(I) \le r \times A(I)$在极大化问题中，或$\forall I, A(I) \le r \times OPT(I)$在极小化问题中。
-
-#### Approximation of Knapsack problem
-
-$s_i$：物品$i$的所占空间；$v_i$：物品$i$的价值；$C$：总共空间；$F_j(i)$：前$j$个物品中价值和为$i$的物品所需最小空间。
-
-$OPT: argmax \{i | F_j(i) \le c\}$，$F_j(i) = min\{F_{j - 1}(i), F_{j - 1}(i - v_i) + s_i\}$
-
-时间复杂度为$O(n^2v_{max})$属于伪多项式时间算法。
-
-若将各个物品的价值缩小$K$倍，$v_i' =  \left\lfloor\frac{v_i}{K}\right\rfloor $，此时时间复杂度变为$O(\frac{n^2v_{max}}{K})$。
-
-令动态规划的解为$S'$，原问题最优解为$S^*$：
-
-$\sum_{j \in S'}v_j \ge \sum_{j \in S'}\left\lfloor\frac{v_j}{K}\right\rfloor \times K = K \times \sum_{j \in S'}v_j'$
-
-$\ge K \times \sum_{j \in S^*}v_j' \ge \sum_{j \in S^*}(\frac{v_j}{K} - 1) \times K$
-
-$= \sum_{j \in S^*}v_j - K|S^*| \ge OPT - n \times K$
-
-我们希望$n \times K \le \epsilon \times OPT \rightarrow K \le \frac{\epsilon}{n} \times v_{max}$ （因为$OPT \ge v_{max}$）
-
-令$K = \frac{\epsilon}{n} \times v_{max}$，$OPT - n \times K = (1 - \epsilon) \times K$，此时时间复杂度变为$O(\frac{n^2v_{max}}{K}) = O(\frac{n^3}{\epsilon})$。
 
 ### Approximation - 1
 
