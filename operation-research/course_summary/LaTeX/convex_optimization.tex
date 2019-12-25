@@ -1,0 +1,548 @@
+\chapter{Convex Optimization}
+\section{Convex Functions}
+Definitions: 
+\begin{itemize}
+    \item Convex set: contains the line through any two distinct points in the set. $x_1, x_2 \in \mathbb{C}, 0 \le \theta \le 1 \Rightarrow \theta x_1 + (1 - \theta)x_2 \in \mathbb{C}$. Intersection of convex sets is convex.
+    \item Convex combination of $x_1, x_2, \cdots, x_n$: any point $x$ of the form $x = \theta_1x_1 + \theta_2x_2 + \cdots + \theta_kx_k$, where $\theta_1 + \theta_2 + \cdots + \theta_k = 1, \theta_i \ge 0$.
+    \item $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is convex if $\text{dom} f$ is a convex set and 
+    $$
+    f(\theta x + (1 - \theta)y) \le \theta f(x) + (1 - \theta)f(y), \ \forall x, y \in \text{dom} f, 0 \le \theta \le 1
+    $$
+    $f$ is concave if $-f$ is convex.
+    \item Sublevel set: $\alpha$-sublevel set of $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
+    $$
+    C_{\alpha} = \{x \in \text{dom} f | f(x) \le \alpha\}
+    $$
+    Sublevel sets of convex functions are convex.
+    \item Epigraph of $f: \mathbb{R}^n \rightarrow \mathbb{R}$: 
+    $$
+    epi \ f = \{(x, t) \in \mathbb{R}^{n + 1} | x \in \text{dom} f, \ f(x) \le t\}
+    $$
+    $f$ is convex if and only if $epi \ f$ is a convex set.
+\end{itemize}
+\subsection{First-order condition}
+$f$ is differentiable if $\text{dom} f$ is open and the gradient
+$$
+\nabla f(x) = (\frac{\partial f(x)}{\partial x_1}, \frac{\partial f(x)}{\partial x_2}, \cdots, \frac{\partial f(x)}{\partial x_n}), \ \forall x \in \text{dom} f
+$$
+Differentiable $f$ with convex domain is convex if and only if 
+$$
+f(y) \ge f(x) + \nabla f(x)^T(y - x)
+$$
+
+\subsection{Second-order condition}
+$f$ is twice differentiable if $\text{dom} f$ is open and the Hessian $\nabla^2 f(x) \in \mathbb{S}^n$
+$$
+\nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial y_j'}, \ \forall i, j = 1, 2, \cdots, n, \ x \in \text{dom} f
+$$
+Twice differentiable $f$ with convex domain is convex if and only if $\nabla^2 f(x) \succcurlyeq 0, \ \forall x \in \text{dom} f$. And if $\nabla^2 f(x) \succ 0, \ \forall x \in \text{dom} f$, then $f$ is strictly convex.
+
+\subsection{Examples of convex and concave functions}
+\begin{itemize}
+    \item Convex.
+    \begin{itemize}
+        \item Affine: $ax + b, \ \forall a, b \in \mathbb{R}$.
+        \item Exponential: $e^{ax}, \ \forall a \in \mathbb{R}$.
+        \item Powers: $x^a, \ \forall a \ge 0 \ or \ a \le 0$.
+        \item Negative entropy: $x\log x \ on \ \mathbb{R}_{++}$.
+        \item All Norms: $||x||_p$.
+    \end{itemize}
+    \item Concave.
+    \begin{itemize}
+        \item Affine: $ax + b, \ \forall a, b \in \mathbb{R}$.
+        \item Powers: $x^a, \forall 0 \le a \le 1$.
+        \item Negative entropy: $x\log x \ on \ \mathbb{R}_{++}$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Operations that preserve convexity}
+\begin{itemize}
+    \item Positive weighted sum and composition with affine function
+    \begin{itemize}
+        \item Nonnegative multiple: $\alpha f$ is convex if $f$ is convex and $\alpha \ge 0$.
+        \item Sum: $f_1 + f_2$ is convex if $f_1, f_2$ are convex.
+        \item Composition with affine function: $f(Ax + b)$ is convex if $g$ is convex.
+    \end{itemize}
+    \item Pointwise maximum: If $f_1, f_2, \cdots, f_m$ are convex, then $f(x) = \max\{f_1(x), \cdots, f_m(x)\}$ is convex.
+    \item Pointwise supermum: If $f(x, y$) is convex in $x$ for each $y \in \mathcal{A}$, then $g(x) = \sup_{u \in \mathcal{A}} f(x, y)$ is convex.
+    \item Composition with scalar functions: $g: \mathbb{R}^n \rightarrow \mathbb{R}$, $h: \mathbb{R} \rightarrow \mathbb{R}$ and $f(x) = h(g(x))$. $f$ is convex if 
+    \begin{itemize}
+        \item $g$ and $f$ are convex and $\tilde{h}$ is nondecreasing.
+        \item $g$ is concave, $h$ is convex and $\tilde{h}$ is nonincreasing.
+    \end{itemize}
+    \item Minimization: If $f(x, y)$ is convex in $(x, y)$ and $C$ is a convex set, then $g(X) = \inf_{y \in C} f(x, y)$ is convex. Distance to a set: $dist(x, S) = \inf_{y \in S} ||x - y||$ is convex if $S$ is convex.
+    \item Perspective: The perspectiveof a function $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is the function $g:\mathbb{R}^n \times \mathbb{R} \rightarrow \mathbb{R}$.
+    $$
+    g(x, t) = tf(\frac{x}{t}), \ \text{dom} g = \{(x, t) | \frac{x}{t} \in \text{dom} f, t > 0\}
+    $$
+    $g$ is convex if $f$ is convex.
+\end{itemize}
+\pagebreak
+
+\section{Convex Optimization Problems}
+\subsection{Optimization problem in standard form}
+$$
+\min \quad f_0(x)
+$$
+$$
+\text{s.t.} 
+\begin{cases}
+    f_i(x) \le 0, \ \forall i = 1, 2, \cdots, m \\
+    h_i(x) = 0, \ \forall i = 1, 2, \cdots, p \\
+\end{cases}
+$$
+\begin{itemize}
+    \item $f_i: \mathbb{R}^n \rightarrow \mathbb{R}$: are inequality constraint functions.
+    \item $h_i: \mathbb{R}^n \rightarrow \mathbb{R}$: are equality constraint functions.
+    \item Optimal value: 
+    $$
+    p^* = inf\{f_0(x) | f_i(x) \le 0, \ \forall i = 1, 2, \cdots, m. \ h_i(x) = 0, \ \forall i = 1, 2, \cdots, p\}
+    $$
+    $p^* = \infty$, if problem is infeasible; $p^* = - \infty$, if problem is unbounded below.
+\end{itemize}
+
+\subsection{Local and global optimal}
+\begin{itemize}
+    \item Any locally optimall point of a convex problem is (globally) optimal. \\
+    Proof: \\
+    Suppose $x$ is locally optimal and $y$ is optimal with $f_0(y) < f_0(x)$. \\
+    $x$ is locally optimal means there is an $R > 0$ such that
+    $$
+    (z \ is \ feasible) \ ||z - x||_2 \le R \Rightarrow f_0(z) \ge f_0(x)
+    $$
+    Consider $z = \theta y + (1 - \theta)x$ with $\theta = \frac{R}{2||y - x||_2}$. $||y - x||_2 > R$, so $0 < \theta < 1/2$. \\
+    $z$ is a convex combination of two feasible points, and $||z - x||_2 = R/2$, hence $z$ is feasible.
+    $$
+    f_0(z) \le \theta f_0(y) + (1 - \theta)f_0(x) < f_0(x)
+    $$
+    which contradicts our assumption that $x$ is locally optimal.
+    \item $x$ is optimal if and only if it's feasible and $\nabla f_0(x)^T(y - x) \ge 0, \  \forall \ feasible \ y$.
+    \item Unconstrained problem: $x$ is optimal if and only if $x \in \text{dom} f, \nabla f_0(x) = 0$.
+    \item Equality constrained problem: $x$ is optimal if and only if there exists a $v$ such that
+    $$
+    x \in \text{dom} f_0, \ Ax = b, \ \nabla f_0(x) + A^Tx = 0
+    $$
+    \item Minimization over nonnegative orthant: $x$ is optimal if and only if
+    $$
+    x \in \text{dom} f, x \succcurlyeq 0, 
+    \begin{cases}
+        \nabla f_0(x)_i \ge 0, \ x_i = 0 \\
+        \nabla f_0(x)_i = 0, \ x_i > 0
+    \end{cases}
+    $$
+\end{itemize}
+\pagebreak
+
+\section{Unconstrained Minimization}
+\subsection{Unconstrained minimization}
+$$
+minimization \ f(x)
+$$
+\begin{itemize}
+    \item $f$ is convex and twice differentiable, hence $\text{dom} f$ is open.
+    \item Assume that optimal value $p^* = \inf_x f(x)$ is attained and finite.
+    \item Unconstrained minimization methods: Produce sequence of points $x^{(k) \in \text{dom} f, \ \forall k = 0, 1, \cdots}$ with
+    $$
+    f(x^{(k)} \rightarrow p^*)
+    $$
+    can be interpreted as iterative methods for solving optimality condition
+    $$
+    \nabla f(x^*) = 0
+    $$
+\end{itemize}
+
+\subsection{Initial point and sublevel set}
+\begin{itemize}
+    \item $x^{(0)} \in \text{dom} f$.
+    \item Sublevel set $S = \{x | f(x) \le f(x^{(0)})\}$ is closed.
+    \item Second condition is hard to verify, except when all sublevel sets are closed:
+    \begin{itemize}
+        \item Equivalent to condition that $epi \ f$ is closed.
+        \item True if $\text{dom} f = \mathbb{R}^n$.
+        \item True if $f(x) \rightarrow \infty$ as $x \rightarrow \text{bddom} f$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Strong convexity and implications}
+\begin{itemize}
+    \item $f$ is strongly convex on $S$ if there exists an $m > 0$ such that
+    $$
+    \nabla^2 f(x) \succeq mI, \ \forall x \in S
+    $$
+    \item Implications:
+    \begin{itemize}
+        \item 
+        $$
+        f(y) \ge f(x) + \nabla f(x)^T(y - x) + \frac{m}{2}||x - y||^2_2, \ \forall x, y \in S
+        $$
+        Hence, $S$ is bounded.
+        \item $p^* > - \infty$, and 
+        $$
+        f(x) - p^* \le \frac{1}{2m}||\nabla f(x)||^2_2, \ \forall x \in S
+        $$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Descent methods}
+Algorithm:
+\begin{algorithm}[H]
+	\caption{General descent methods.}
+	\begin{algorithmic}[1]
+        \State Given: a starting point $x \in \text{dom} f$.
+        \Repeat
+            \State 1. Determine a descent direction $\Delta x$.
+            \State 2. Line search. Choose a step size $t > 0$.
+            \State 3. Update. $x := x + t\Delta x$.
+        \Until stopping criterion is satisfied.
+	\end{algorithmic}
+\end{algorithm}
+
+\subsection{Line search types}
+\begin{itemize}
+    \item Exact line search: 
+    $$
+    t = argmin_{t > 0} f(x + t\Delta x)
+    $$
+    \item Backtracking line search (with parameters $\alpha \in (0, 1/2), \ \beta \in (0, 1)$): \\
+    Starting at $t = 1$, repeat $t := \beta t$ until
+    $$
+    f(x + t\Delta x) < f(x) + \alpha t \nabla f(x)^T\Delta x
+    $$
+\end{itemize}
+
+\subsection{Gradient descent method}
+Algorithm:
+\begin{algorithm}[H]
+	\caption{Gradient descent method.}
+	\begin{algorithmic}[1]
+        \State Given: a starting point $x \in \text{dom} f$.
+        \Repeat
+            \State 1. $\Delta x := - \nabla f(x)$. 
+            \State 2. Line search. Choose step size $t$ via exact or backtracking line search. 
+            \State 3. Update. $x := x + t\Delta x$.
+        \Until stopping criterion is satisfied.
+	\end{algorithmic}
+\end{algorithm}
+\begin{itemize}
+    \item Stopping criterion usually of teh form $||\nabla f(x)||_2 \le \epsilon$.
+    \item Convergence result: for strong convex $f$,
+    $$
+    f(x^{(k)}) - p^* \le c^k(f(x^{(0)}) - p^*)
+    $$
+    $c \in (0, 1)$ depends on $m$, $m^{(0)}$, line search type.
+\end{itemize}
+
+\subsection{Steepest descent method}
+$$
+\Delta x_{nsd} = argmin\{\nabla f(x)^Tv \ | \ ||v|| = 1\}
+$$
+\begin{itemize}
+    \item For small $v$, $f(x + v) \approx f(x) + \nabla f(x)^Tv$.
+    \item Direction $\Delta x_{nsd}$ is unit-norm step with most negative directional derivative.
+    \item General descent method with $\Delta x = \Delta x_{sd}$.
+    \item Convergence properties are similiar to gradient descent.
+\end{itemize}
+
+\subsection{Newton step}
+$$
+\Delta x_{nt} = - \nabla^2 f(x)^{-1}\nabla f(x)
+$$
+\begin{itemize}
+    \item $x + \Delta x_{nt}$ minimizes second-order approximation.
+    $$
+    \hat{f}(x + v) = f(x) + \nabla f(x)^Tv + \frac{1}{2}v^T \nabla^2 f(x)v
+    $$
+    \item $x + \Delta x_{nt}$ solves linearized optimality condition.
+    $$
+    \nabla f(x + v) \approx \nabla \hat{f}(x + v) = \nabla f(x) + \nabla^2 f(x)v = 0
+    $$
+    \item $\Delta x_{nt}$ is steepest descent direction at $x$ in local Hessian norm.
+    $$
+    ||u||_{\nabla^2 f(x)} = (u^T\nabla^2 f(x)u)^{1/2}
+    $$
+\end{itemize}
+
+\subsection{Newton decrement}
+$$
+\lambda(x) = (\nabla f(x)^T \nabla^2 f(X)^{-1}\nabla f(x))^{1/2}
+$$
+\begin{itemize}
+    \item A measure of the proximity of $x$ to $x^*$.
+    \item Gives an estimate of $f(x) - p^*$, using quadratic approximation $\hat{f}$.
+    $$
+    f(x) - \inf_{y}\hat{f}(y) = \frac{1}{2}\lambda(x)^2
+    $$
+    \item Equal to the norm of the Newton step in the quadratic Hessian norm.
+    $$
+    \lambda(x) = (\Delta x^T_{nt}\nabla^2 f(x) \Delta x_{nt})^{1/2}
+    $$
+    \item Direction derivative in teh Newton direction:
+    $$
+    \nabla f(x)^T \Delta x_{nt} = -\lambda (x)^2
+    $$
+\end{itemize}
+
+\subsection{Newton's method}
+Algorithm:
+\begin{algorithm}[H]
+	\caption{Newton's method.}
+	\begin{algorithmic}[1]
+        \State Given: a starting point $x \in \text{dom} f$, tolerance $\epsilon > 0$.
+        \MRepeat
+            \State 1. Compure the Newton step and decrement.
+            \State $\Delta x_{nt} := -\nabla^2 f(x)^{-1}\nabla f(x)$;  $\lambda^2 := \nabla f(x)^T \nabla^2 f(X)^{-1}\nabla f(x)$. 
+            \State 2. Stopping criterion. Quit if $\lambda^2/2 \le \epsilon$.
+            \State 3. Line search. Choose step size $t$ by backtracking line search.
+            \State 4. Update. $x := x + t\Delta x_{nt}$
+        \EndRepeat
+	\end{algorithmic}
+\end{algorithm}
+Newton iterates for $\tilde{f}(y) = f(Ty)$ with starting point $y^{(0)} = T^{-1}x^{(0)}$ are
+$$
+y^{(k)} = T^{-1}x^{(k)}
+$$
+
+\subsection{Classical convergence analysis}
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item $f$ is strongly convex on $S$ with constant $m$.
+    \item $\nabla^2 f$ is Lipschitz continuous on $S$, with constant $L > 0$:
+    $$
+    ||\nabla^2 f(x) - \nabla^2 f(y)||_2 \le L||x - y||_2
+    $$
+    ($L$ measures how well $f$ can be approximated by a quadratic function.)
+\end{itemize}
+
+\subsubsection{Outline}
+There exists constants $\eta \in (0, m^2/L), \gamma > 0$ such that
+\begin{itemize}
+    \item If $||\nabla f(x)||_2 \ge \eta$, then 
+    $$
+    f(x^{(k + 1)}) - f(x^{(k)}) \le - \gamma
+    $$
+    \item If $||\nabla f(x)||_2 < \eta$, then
+    $$
+    \frac{L}{2m^2} ||\nabla f(x^{(k + 1)})||_2 \le (\frac{L}{2m^2}||\nabla f(x^{(k)})||_2)^2
+    $$
+\end{itemize}
+
+\subsubsection{Damped Newton phase ($||\nabla f(x)||_2 \ge \eta$)}
+\begin{itemize}
+    \item Most iterations require backtracking steps.
+    \item Function vales decreases by at least $\gamma$.
+    \item If $p^* > - \infty$, this phase ends after at most 
+    $$
+    (f(x^{(0)}) - p^*) / \gamma
+    $$
+    iterations.
+\end{itemize}
+
+\subsubsection{Quadratically convergent phase ($||\nabla f(x)||_2 < \eta$)}
+\begin{itemize}
+    \item All iterations use step size $t = 1$.
+    \item $||\nabla f(x)||_2$ converges to zero quadratically: if $||\nabla f(x^{(k)})||_2 < \eta$, then
+    $$
+    \frac{L}{2m^2}||\nabla f(x^l)||_2 \le (\frac{L}{2m^2}||\nabla f(x^{k})||_2)^{2^{l - k}} \le (\frac{1}{2})^{2^{l - k}}, \ l \ge k
+    $$
+\end{itemize}
+
+\subsubsection{Conclusion}
+Number of iterations until $f(x) - p^* \le \epsilon$ is bounded above by
+$$
+\frac{f(x^{(0)}) - p^*}{\gamma} + \log_2\log_2(\epsilon_0/\epsilon)
+$$
+\begin{itemize}
+    \item $\gamma, \epsilon_0$ are constants that depend on $m, L, x^{(0)}$.
+    \item Second term is small (of the order of $6$) and almost constant for practical purposes.
+    \item In practice, constants $m, L$ (hence $\gamma, \epsilon_0$) are usually unknown.
+    \item Provides qualitative insight in convergence properties, i.e., explains two algorithm phases.
+\end{itemize}
+\pagebreak
+
+\section{Duality}
+\subsection{Lagrange dual function}
+$$
+\min \quad f_0(x)
+$$
+$$
+\text{s.t.} 
+\begin{cases}
+    f_i(x) \le 0, \ \forall i = 1, 2, \cdots, m \\
+    h_i(x) = 0, \ \forall i = 1, 2, \cdots, p \\
+\end{cases}
+$$
+$x \in \mathbb{R}^n$, domain $\mathcal{D}$, optimal value $p^*$. \\
+\begin{itemize}
+    \item Lagrangian: $L: \mathbb{R}^n \times \mathbb{R}^m \times \mathbb{R}^p \rightarrow \mathbb{R}$, with $\text{dom} L = \mathcal{D} \times \mathbb{R}^m \times \mathbb{R}^p$
+    $$
+    L(x, \lambda, v) = f_0(x) + \sum_{i = 1}^m \lambda_if_i(x) + \sum_{i = 1}^m v_ih_i(x)
+    $$
+    \item Lagrange dual function $g: \mathbb{R}^m \times \mathbb{R}^p \rightarrow \mathbb{R}$
+    \begin{align}
+        g(\lambda, v) & = \inf_{x \in \mathcal{D}} L(x, \lambda, v) \nonumber \\
+        & = \inf_{x \in \mathcal{D}} (f_0(x) + \sum_{i = 1}^m \lambda_if_i(x) + \sum_{i = 1}^m v_ih_i(x)) \nonumber
+    \end{align}
+    \item $g$ is concave, can be $- \infty$ for some $\lambda, v$.
+    \item Lower bound property: $\lambda \succcurlyeq 0$, then $g(\lambda, v) \le p^*$.
+\end{itemize}
+
+\subsection{Least-norm solution of linear equations}
+$$
+\min \quad x^Tx
+$$
+$$
+\text{s.t.} \quad
+    Ax = b
+$$
+Lagrangian is 
+$$
+L(x, v) = x^Tx + v^T(Ax - b)
+$$
+To minimize $L$ over $x$, set gradient equal to zero:
+$$
+\nabla_xL(x, v) = 2x + A^Tv = 0
+\Rightarrow x = -\frac{1}{2}A^Tv
+$$
+Plug it in $L$ to obtain $g$:
+\begin{align}
+    g(v) & = L(-\frac{1}{2}A^T) \nonumber \\
+    & = -(\frac{1}{4})v^TAA^Tv - b^Tv \nonumber
+\end{align}
+A concave function of $v$.
+\begin{itemize}
+    \item Lower bound property: $p^* \ge -(\frac{1}{4})v^TAA^Tv - b^Tv, \ \forall v$.
+\end{itemize}
+
+\subsection{Standard form LP}
+$$
+\min \quad c^Tx
+$$
+$$
+\text{s.t.} \quad
+    Ax = b, \ x \succcurlyeq 0
+$$
+Lagrangian is 
+\begin{align}
+    L(x, v) & = c^Tx + v^T(Ax - b) - \lambda^Tx \nonumber \\
+    & = -b^Tv + (c + A^Tv - \lambda)^Tx \nonumber
+\end{align}
+$L$ is affine in $x$, hence
+$$
+g(\lambda, v) = \inf_{x \in \mathcal{D}} L(x, \lambda, v) = 
+\begin{cases}
+    -b^Tv, \ & A^Tv = \lambda + c = 0 \\
+    - \infty, \ & \text{otherwise}
+\end{cases}
+$$
+\begin{itemize}
+    \item $g$ is linear on affine domain $\{(\lambda, v) | A^Tv - \lambda + c = 0\}$, hence concave.
+    \item Lower bound property: $p^* \ge -b^Tv$ if $A^Tv + c \succcurlyeq 0$.
+\end{itemize}
+
+\subsection{Two-way partitioning}
+$$
+\min \quad x^TWx
+$$
+$$
+\text{s.t.} \quad
+    x_i^2 = 1, \ \forall i = 1, 2, \cdots, n
+$$
+Partition $\{1, 2, \cdots, n\}$ in two sets; $W_{ij}$ is cost of assigning $i, j$ to the same set; $-W_{i, j}$ is the cost of assigning to different sets.
+\begin{align}
+    g(v) & = \inf_{x \in \mathcal{D}} (x^TWx + \sum_{i} v_i (x_i^2 - 1)) \nonumber \\    
+    & = \inf_{x \in \mathcal{D}} (x^T(W + diag(v))x - \textbf{1}^Tv) \nonumber \\
+    & = \begin{cases}
+        - \textbf{1}^Tv, \ & W + diag(v) \succcurlyeq 0 \\
+        - \infty, \ & \text{otherwise}
+    \end{cases} \nonumber
+\end{align}
+\begin{itemize}
+    \item Lower bound property: $p^* \ge - \textbf{1}^Tv$ if $W + diag(v) \succcurlyeq 0$.
+\end{itemize}
+\pagebreak
+
+\subsection{Equality constrained norm minimization}
+$$
+\min \quad ||x||
+$$
+$$
+\text{s.t.} \quad
+    Ax = b
+$$
+\begin{align}
+    g(v) = & \inf_{x \in \mathcal{D}} (||x|| - v^TAx + b^Tx) \nonumber \\
+    & = \begin{cases}
+        b^Tv, \ & ||A^Tv||_* \le 1 \\
+        - \infty, \ & \text{otherwise}
+    \end{cases} \nonumber
+\end{align}
+\begin{itemize}
+    \item Where $||v||_* = \sup_{||u|| \le 1}u^Tv$ is dual norm of $||\cdot||$.
+    \item Lower bound property: $p^* \ge b^Tv$ if $||A^Tv||_* \le 1$.
+\end{itemize}
+
+\subsection{Slater's constraint qualification}
+$$
+\min \quad f_0(x)
+$$
+$$
+\text{s.t.} 
+\begin{cases}
+    f_i(x) \le 0, \ \forall i = 1, 2, \cdots, m \\
+    Ax = b
+\end{cases}
+$$
+If it's strictly feasible, i.e., 
+$$
+\exists x \in \text{relint}\mathcal{D} 
+$$
+$$
+\text{s.t.} 
+\begin{cases}
+    f_i(x) < 0, \ \forall i = 1, \cdots, m \\
+    Ax = b    
+\end{cases}
+$$
+($\text{relint}\mathcal{D}$ is relative interior of set $\mathcal{D}$.)
+\begin{itemize}
+    \item Guarantee that the dual opyimum is attained (if $p^* > - \infty$).
+\end{itemize}
+
+\subsection{Karush-Kuhn-Tucker (KKT) conditions}
+The following four conditions are called KKT conditions (with differentiable $f_i, h_i$):
+\begin{itemize}
+    \item Primal constraints:
+    $$
+    \begin{cases}
+        f_i(x) \le 0, \ \forall i = 1, \cdots, m  \\
+        h_i(x) = 0, \ \forall i = 1, \cdots, p  
+    \end{cases}
+    $$
+    \item Dual constraints:
+    $$
+    \lambda \succcurlyeq 0
+    $$
+    \item Complementary slackness: 
+    $$
+    \lambda^*_if_i(x^*) = 0, \ \forall i = 1, \cdots, m
+    $$
+    \item Gradient of Lagrangian with respect to $x$ vanishes:
+    $$
+    \nabla f_0(x) + \sum_{i = 1}^m \lambda_i \nabla f_i(x) + \sum_{i = 1}^m v_i\nabla h_i(x) = 0
+    $$
+\end{itemize}
+If strong duality holds and $x, \lambda, v$ are optimal, then they must satisfy the KKT conditions.
+\begin{itemize}
+    \item If $\tilde{x}, \tilde{\lambda}, \tilde{v}$ satisfy KKT conditions for a convex problem, then they are optimal
+    \begin{itemize}
+        \item From complementary slackness: $f_0(\tilde{x}) = L(\tilde{x}, \tilde{\lambda}, \tilde{v})$.
+        \item From fourth condition and convexity: $g(\tilde{\lambda}, \tilde{v}) = L(\tilde{x}, \tilde{\lambda}, \tilde{v})$.
+    \end{itemize}
+    Hence, $f_0(\tilde{x}) = g(\tilde{\lambda}, \tilde{v})$.
+    \item If Slater's condition is satisfied: $x$ is optimal if and only if there exists $\lambda, v$ that satisfy KKT conditions.
+\end{itemize}
+
+
+
+
+\pagebreak

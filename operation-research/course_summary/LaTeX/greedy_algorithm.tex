@@ -1,0 +1,132 @@
+\section{贪心算法}
+\subsection{一类贪心算法}
+\subsubsection{一类贪心算法}
+考虑一个有限元素集合 $E$，给 $E$ 中的每个元素 $e$ 定义一个非负的费用 $c(e)$。再考虑 $\mathcal{F} \in 2^E$，对于 $F \in \mathcal{F}$，定义 $F$ 的费用 $c(F) = \sum\limits_{e \in F} c(e)$。一类问题即找出一个 $F$，使得 $c(F)$ 最大（或最小）。
+
+\subsubsection{独立集系统}
+对于一个二元组 $(E, \mathcal{F})$，
+\begin{enumerate}
+    \item $\emptyset \in \mathcal{F}$ 。
+    \item $\forall Y \in \mathcal{F}$，$X \subseteq Y \to X \in \mathcal{F}$ 。 
+\end{enumerate}
+称 $(E, \mathcal{F})$ 为独立系统 (independent system)。 \\
+在独立系统 $(E, \mathcal{F})$ 中，$\mathcal{F}$ 中的元素称为独立集，$E - \mathcal{F}$ 中的元素称为相关集。
+
+\subsubsection{基和圈}
+将 $\mathcal{F}$ 中的极大独立集称为基 (basis)，将 $E - \mathcal{F}$ 中的极小相关集称为圈 (circuit)。
+对于 $X \subseteq E$，定义 $X$ 上的基为 $X$ 中的极大独立集。
+
+\subsubsection{秩商}
+对于 $X \subseteq E$，$X$ 中的基大小可能不同。定义 $X$ 的秩 $r(X)$ 为 $X$ 中最大的基的大小，类似地定义 $X$ 的下秩 $\rho(X)$ 为 $X$ 中最小的基的大小。
+由此定义独立系统的秩商 $q(E, \mathcal{F}) = \min\limits_{x \subseteq E} \quad \frac{\rho(X)}{r(X)}$。秩商是一类问题中贪心解法近似比的下界。
+
+\subsubsection{独立集系统的对偶}
+$(E, \mathcal{F}) \rightarrow (E, \mathcal{F}^*)$，$\mathcal{F}^* = \{X \subseteq E \ | \ \exists F$ 的一个基 $\beta, \ X \cap \beta = \emptyset\}$。 \\
+有以下性质：
+\begin{enumerate}
+    \item $(E, \mathcal{F}^*)$是一个独立集系统。
+    \item 若$B$是$(E, \mathcal{F})$的基，$E - B$是$(E, \mathcal{F}^*)$的基。
+    \item $(E, \mathcal{F}^{**}) = (E, \mathcal{F})$。 \\
+    证明：
+    \begin{align}
+        \nonumber
+        \forall X \in \mathcal{F}^{**} & \iff 
+        \exists (E, \mathcal{F}^*) \mbox{的一个基}B^*, X \cap B^* = \emptyset \\ & \iff \nonumber
+        \exists (E, \mathcal{F}) \mbox{的一个基}B, X \cap (E - B) = \emptyset \\ & \iff \nonumber
+        \exists (E, \mathcal{F}) \mbox{的一个基}B, X \subseteq B \\ & \iff \nonumber
+        X \subseteq \mathcal{F} \nonumber
+    \end{align}
+\end{enumerate}
+
+\subsection{一类最大（小）化问题}
+根据独立系统的定义，可以引出一类最大（小）化问题。
+\begin{itemize}
+    \item 最大化问题：\item 给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $c(F)$ 最大。
+    由于每个元素的费用都是非负的，所以 $|F|$ 越大，$c(F)$ 也越大。因此最优的 $F$ 一定是基。
+    \item 最小化问题：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $F$ 是基，且 $c(F)$ 最小。
+\end{itemize}
+对任一最大化问题$(E, \mathcal{F})$有$q(E, \mathcal{F}) \le \frac{G(E, \mathcal{F})}{OPT(E, \mathcal{F})} \le 1$，其中$G(E, \mathcal{F})$是贪心算法的目标函数值。 \\
+以下证明： \\
+$E = \{e_1, \ \cdots, \ e_n\}, \ c: E \rightarrow R^+$。$G_n$是贪心算法的解，$O_n$是最优解，有$G_j = G_n \cap E_j, \ O_j = O_n \cap E_j$，其中$E_j = \{e_1, \ \cdots, \ e_j\}, \ c_1 \le c_2 \le \cdots, c_n, \ G_0 = O_o = \emptyset$。
+\begin{align}
+    c(G_n) & = \sum^{n}_{j = 1}(|G_j| - |G_{j - 1}|) \times c_j \tag{1} \\ 
+    & = \sum^{n}_{j = 1}|G_j| \times (c_j - c_{j + 1}) \tag{2} \\
+    & \ge \sum^{n}_{j = 1}\rho(E_j) \times (c_j - c_{j + 1}) \tag{3} \\ 
+    & \ge q\sum^{n}_{j = 1}r(E_j)(c_j - c_{j + 1}) \tag{4} \\
+    & \ge q\sum^{n}_{j = 1}|O_j|(c_j - c_{j + 1}) \tag{5} \\ 
+    & = q \times c(O_n) \tag{6} \\
+    & \Rightarrow \quad \frac{c(G_n)}{c(O_n)} \ge q \tag{7}
+\end{align}
+（$(2) \Rightarrow (3)$：因为$|G_j|$是$E_j$的一个最大独立集；$(4) \Rightarrow (5)$：因为$r(E_j)$是最大个数） \\
+$\exists F, \ \frac{\rho(F)}{r(F)} = q(E, F) = \frac{|X|}{|Y|}$， 构造
+$$
+c(e) = 
+\begin{cases}
+1, \ e \in F \\
+0, \ e \notin F
+\end{cases} \\
+(c_1 = c_2 = \cdots = c_{|X|} = 1, \ c_{|X| + 1} = \cdots = c_n = 0)
+$$
+
+\subsubsection{最大化问题的实例}
+\begin{itemize}
+    \item $0-1$ 背包问题：$E$ 中的元素是每个物品，$\mathcal{F}$ 中的元素是所有可以放进背包的物品集合，费用就是物品的价值。
+    \item 最大权独立集：$E$ 中的元素是点，$\mathcal{F}$ 中的元素是独立集，费用就是每个点的权值。
+    \item 最长简单路径：$E$ 中的元素是边，$\mathcal{F}$ 中的元素是所有从起点到终点的简单路径以及其子集，费用就是每条边的距离。
+    \item 最大权森林：$E$ 中的元素是边，$\mathcal{F}$ 中的元素是所有不含圈的边集，费用就是每条边的权值。
+\end{itemize}
+
+\subsubsection{最小化问题的实例}
+\begin{itemize}
+    \item 最小生成树问题：$E$ 中的元素是边，$\mathcal{F}$ 中的元素是所有不含圈的边集，费用就是每条边的权值。
+    \item 最短路问题：$E$ 中的元素是边，$\mathcal{F}$ 中的元素是所有从起点到终点的简单路径以及其子集，费用就是每条边的距离。
+    \item 旅行商问题：$E$ 中的元素是边，$\mathcal{F}$ 中的元素是哈密尔顿回路及其子集，费用就是每条边的距离。
+\end{itemize}
+
+\subsection{拟阵}
+拟阵 (matroid)是一个特殊的独立集系统。一个独立系统需要满足以下三个条件中的一个才被称为是拟阵（以下三个条件等价）：
+\begin{enumerate}
+    \item 若 $X, Y \in \mathcal{F}$，且 $|X| > |Y|$，则 $\exists e \in X - Y$，$Y \cup \{e\} \in \mathcal{F}$。
+    \item 若 $X, Y \in \mathcal{F}$，且 $|X| = |Y| + 1$，则 $\exists e \in X - Y$，$Y \cup \{e\} \in \mathcal{F}$。
+    \item $\forall X \subseteq E$，$X$ 的所有基大小相同。
+\end{enumerate}
+
+\subsubsection{例子}
+\begin{enumerate}
+    \item $E = \{v_1, \ \cdots, \ v_m\}$，$\mathcal{F} = \{z \subseteq E \ | \ z$是线性无关组$\}$。
+    \item $E$是有限集合，$\mathcal{F} = \{X \subseteq E, |X| \le k \in N\}$。（一致拟阵）
+    \item $E$是无向图$G$，$\mathcal{F} = \{X \subseteq E, X$构成一个森林$\}$。（图拟阵）
+\end{enumerate}
+
+\subsubsection{拟阵的交}
+假设有两拟阵$(E, \mathcal{F}_1)$，$(E, \mathcal{F}_2)$，其交为$(E, \mathcal{F}_1 \cap \mathcal{F}_2)$。 \\
+$n$ 个拟阵的交，用贪心算法得到的解近似比为 $\frac{1}{n}$。 \\~\\
+任一个独立集系统都是有限个拟阵的交。 \\
+以下证明： \\
+独立集系统$(E, \mathcal{F})$，假设其有$k$个圈$C_1, \ \cdots, C_k$，$F_i = \{X \subseteq E | X \nsupseteq C_i\}$。 \\
+$(E, \mathcal{F}_i), \ \forall \mathcal{F} \subseteq E$，此时有两种可能：
+\begin{enumerate}
+    \item $F \nsupseteq C_i$。
+    \item $F \supseteq C_i$，$\forall e \in C_i, \mathcal{F} - \{e\}$是极大独立集。
+\end{enumerate}
+$\forall X \in \mathcal{F}, X$不含任何圈$\iff X \in \cap^{k}_{i = 1}\mathcal{F}_i$ \\
+$(E, \mathcal{F})$为独立集系统，$\mathcal{F} = \cap^{k}_{i = 1}\mathcal{F}_i$。 \\
+设$F \subseteq E$，考虑$(E, \mathcal{F})$在$\mathcal{F}$上，两个不同的极大独立集，$A, B \ (|B| \ge |A|)$欲证$|B| \le k|A|$。 \\
+$\forall e \in B - A$，有$e \notin \cap^{k}_{i = 1} (A_i - A)$，$A_i: (E, \mathcal{F}_i)$在$A \cup B$含$A$极大独立集，则$e$最多出现在$(k - 1)$个$A_i - A$中，$\sum^{k}_{i = 1}|A_i - A| \le (k - 1)|B - A| \le (k - 1)|B|$，
+同理$k|B| \le \sum^{k}_{i = 1}|A_i| $（因为极大独立集有相同维数）$\le k|A| + (k - 1)|B|$。 \\
+得证$|B| \le k|A|$。
+
+\subsection{两类贪心算法}
+\subsubsection{Best in}
+将 $E$ 中所有元素按费用从大到小排序，使得 $c(e_1) \ge c(e_2) \ge ... \ge c(e_n)$。假设 $F = \emptyset$，依照 $e_1, e_2 \dots, e_n$ 的顺序考虑，若 $e_i$ 加入 $F$ 后 $F$ 仍是独立集，就加入$e_i$。此贪心算法用于解决最大化问题。 \\
+设 $G(E, \mathcal{F})$ 表示 Best in 算法得到的解；$\text{OPT}(E, \mathcal{F})$ 表示最优解，则 $$q(E, \mathcal{F}) \le \frac{G(E, \mathcal{F})}{\text{OPT}(E, \mathcal{F})} \le 1$$ 从此定理可以看出：若一个独立集系统是拟阵，则用 Best in 算法得到的最大化问题的解一定是最优解。
+
+\subsubsection{Worst out}
+将 $E$ 中所有元素按费用从大到小排序，使得 $c(e_1) \ge c(e_2) \ge ... \ge c(e_n)$。假设 $F = E$，依照 $e_1, e_2 \dots, e_n$ 的顺序考虑，若把 $e_i$ 从 $F$ 中去掉后 $F$ 还含有至少一个基，就去掉$e_i$。此贪心算法用于解决最小化问题。 \\
+使用 Worst out 贪心得到的解满足 
+$$
+1 \le \frac{G(E, \mathcal{F})}{\text{OPT}(E, \mathcal{F})} \le \max\limits_{F \subseteq E} \quad \frac{|F| - \rho^*(F)}{|F| - r^*(F)}
+$$ 
+其中 $\rho^*(F)$ 表示对偶独立集系统中的下秩，$r^*(F)$ 表示对偶独立系统中的秩。
+
+\pagebreak
