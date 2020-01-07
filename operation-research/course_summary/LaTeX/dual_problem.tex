@@ -162,7 +162,7 @@ $$
 \begin{cases}
     3x_1 + 2x_2 - 3x_3 \ge 3 \\
     2x_1 + x_3 \ge 5 \\
-    x \ge 0
+    x_1, x_2, x_3 \ge 0
 \end{cases}
 $$
 加入松弛变量后，问题转化为
@@ -173,8 +173,8 @@ $$
 \text{s.t.} 
 \begin{cases}
     3x_1 + 2x_2 - 3x_3 - x_4 = 3 \\
-    2x_1 + x_3 - x_5 =  5 \\
-    x \ge 0
+    2x_1 + x_3 - x_5 = 5 \\
+    x_1, x_2, x_3, x_4, x_5 \ge 0
 \end{cases}
 $$
 有初始单纯形表
@@ -202,7 +202,7 @@ $$
 如果能找到一个 $x$ 满足上面三个条件，$x$ 和 $y$ 就能满足互补松弛定理。 \\
 为了获得一个可行的 $x$，构造一个优化问题，称为限制的原问题（restricted primal, RP）。
 $$
-\max \quad \sum_{i = 1}^m \bar{x_i}
+\min \quad \sum_{i = 1}^m \bar{x_i}
 $$
 $$
 \text{s.t.} 

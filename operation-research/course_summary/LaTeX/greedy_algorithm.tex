@@ -41,13 +41,13 @@ $(E, \mathcal{F}) \rightarrow (E, \mathcal{F}^*)$，$\mathcal{F}^* = \{X \subset
 \subsection{一类最大（小）化问题}
 根据独立系统的定义，可以引出一类最大（小）化问题。
 \begin{itemize}
-    \item 最大化问题：\item 给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $c(F)$ 最大。
-    由于每个元素的费用都是非负的，所以 $|F|$ 越大，$c(F)$ 也越大。因此最优的 $F$ 一定是基。
+    \item 最大化问题：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $c(F)$ 最大。
+    由于每个元素的费用都是非负的，所以 $|F|$ 越大，$c(F)$ 也越大，因此最优的 $F$ 一定是基。
     \item 最小化问题：给出一个独立系统 $(E, \mathcal{F})$，找出一个 $F \in \mathcal{F}$，使得 $F$ 是基，且 $c(F)$ 最小。
 \end{itemize}
 对任一最大化问题$(E, \mathcal{F})$有$q(E, \mathcal{F}) \le \frac{G(E, \mathcal{F})}{OPT(E, \mathcal{F})} \le 1$，其中$G(E, \mathcal{F})$是贪心算法的目标函数值。 \\
 以下证明： \\
-$E = \{e_1, \ \cdots, \ e_n\}, \ c: E \rightarrow R^+$。$G_n$是贪心算法的解，$O_n$是最优解，有$G_j = G_n \cap E_j, \ O_j = O_n \cap E_j$，其中$E_j = \{e_1, \ \cdots, \ e_j\}, \ c_1 \le c_2 \le \cdots, c_n, \ G_0 = O_o = \emptyset$。
+$E = \{e_1, \ \cdots, \ e_n\}, \ c: E \rightarrow R^+$。$G_n$是贪心算法的解，$O_n$是最优解，有$G_j = G_n \cap E_j, \ O_j = O_n \cap E_j$，其中$E_j = \{e_1, \ \cdots, \ e_j\}, \ c_1 \le c_2 \le \cdots, c_n, \ G_0 = O_0 = \emptyset$。
 \begin{align}
     c(G_n) & = \sum^{n}_{j = 1}(|G_j| - |G_{j - 1}|) \times c_j \tag{1} \\ 
     & = \sum^{n}_{j = 1}|G_j| \times (c_j - c_{j + 1}) \tag{2} \\
